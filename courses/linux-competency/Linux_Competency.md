@@ -1,11 +1,10 @@
 # Basic Linux Competency with Focus on RPM
-**Course Length**: 12 Weeks  
 **Target Audience**: Beginners aiming to gain a strong understanding of Linux with an emphasis on RPM-based distributions.  
 **Objective**: By the end of this course, learners will be able to navigate, manage, and maintain a Linux system with RPM-based package management.
 
 ---
 
-## Week 1: Introduction to Linux and the Command Line Interface (CLI)
+## Section 1: Introduction to Linux and the Command Line Interface (CLI)
 ### Exercise: File Navigation Challenge
 **Objective**: Navigate the Linux filesystem, list specific files, and create a new file.
 
@@ -44,7 +43,7 @@
 
 ---
 
-## Week 2: Working with Files, Permissions, and Processes
+## Section 2: Working with Files, Permissions, and Processes
 ### Exercise: Permission and Ownership Task
 **Objective**: Change file permissions and ownership, and understand the effect.
 
@@ -86,7 +85,7 @@
 
 ---
 
-## Week 3: Introduction to RPM Package Management
+## Section 3: Introduction to RPM Package Management
 ### Exercise: Basic RPM Package Installation
 **Objective**: Install, query, and verify an RPM package.
 
@@ -122,7 +121,7 @@
 
 ---
 
-## Week 4: Advanced RPM Usage
+## Section 4: Advanced RPM Usage
 ### Exercise: Upgrading and Rolling Back RPM Packages
 **Objective**: Upgrade a package and roll back to a previous version.
 
@@ -164,7 +163,7 @@
 
 ---
 
-## Week 5: Mastering YUM/DNF for Package Management
+## Section 5: Mastering YUM/DNF for Package Management
 ### Exercise: Repository Configuration and Software Group Installation
 **Objective**: Add a repository and install a software group.
 
@@ -194,7 +193,7 @@
 
 ---
 
-## Week 6: Basic System Administration
+## Section 6: Basic System Administration
 ### Exercise: Service and User Management
 **Objective**: Create a user, assign them to a group, and manage a service.
 
@@ -236,7 +235,7 @@
 
 ---
 
-## Week 7: Networking Basics
+## Section 7: Networking Basics
 ### Exercise: Basic Network Troubleshooting
 **Objective**: Test network connectivity and troubleshoot with basic tools.
 
@@ -262,7 +261,7 @@
 
 ---
 
-## Week 8: Scripting and Automation
+## Section 8: Scripting and Automation
 ### Exercise: Automating a Backup Script
 **Objective**: Write a shell script to back up files and schedule it with `cron`.
 
@@ -303,7 +302,7 @@
 
 ---
 
-## Week 9: Basic Security and Hardening
+## Section 9: Basic Security and Hardening
 ### Exercise: SELinux and Firewall Configuration
 **Objective**: Understand SELinux and configure the firewall.
 
@@ -342,7 +341,7 @@
 
 ---
 
-## Week 10: Disk Management and Partitioning
+## Section 10: Disk Management and Partitioning
 ### Exercise: Manage Partitions with `fdisk`
 **Objective**: Create and format a new partition.
 
@@ -382,7 +381,7 @@
 
 ---
 
-## Week 11: Backup and Restore Strategies
+## Section 11: Backup and Restore Strategies
 ### Exercise: Creating Incremental Backups with `rsync`
 **Objective**: Perform incremental backups using `rsync`.
 
@@ -412,7 +411,7 @@
 
 ---
 
-## Week 12: Course Review and Capstone Project
+## Section 12: Course Review and Capstone Project
 ### Capstone Project: Setting Up a Python Web Application with the LEMP Stack
 **Objective**: Set up and configure a Python-based web application on a LEMP stack (Linux, Nginx, MySQL, Python with Flask).
 
