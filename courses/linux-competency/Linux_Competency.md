@@ -9,7 +9,14 @@
 **Objective**: Navigate the Linux filesystem, list specific files, and create a new file.
 
 1. **Open Terminal**:
-   - On your Linux system, press `Ctrl+Alt+T` or open the terminal from the application menu.
+   - Access a linux command line. I'm using `podman` to stand up a container for this course, but you can use some other cli like `docker` if you prefer.
+   ```
+   podman run -it centos bash
+   ```
+   or
+   ```
+   docker run -it centos bash
+   ```
 
 2. **Move to the `/usr/bin` directory**:
    - Use the `cd` command:
@@ -74,7 +81,7 @@
 5. **Change the ownership of the file to another user** (replace `username` with an actual user on your system):
    - Use the `chown` command:
      ```bash
-     sudo chown username ~/myfile.txt
+     chown username ~/myfile.txt
      ```
 
 6. **Verify the ownership change**:
@@ -92,13 +99,13 @@
 1. **Download an RPM package**:
    - Download a package from a trusted source, for example, `wget`:
      ```bash
-     sudo dnf install wget
+     dnf install wget
      ```
 
 2. **Install the RPM package**:
    - Use the `rpm -ivh` command to install the package (replace `package.rpm` with the actual filename):
      ```bash
-     sudo rpm -ivh package.rpm
+     rpm -ivh package.rpm
      ```
 
 3. **Verify that the package is installed**:
@@ -128,7 +135,7 @@
 1. **Install an older version of a package**:
    - Download and install an older version of a package:
      ```bash
-     sudo rpm -ivh oldversion.rpm
+     rpm -ivh oldversion.rpm
      ```
 
 2. **Verify the installed version**:
@@ -140,7 +147,7 @@
 3. **Upgrade the package to the latest version**:
    - Download the latest version and install it with `rpm -Uvh`:
      ```bash
-     sudo rpm -Uvh latestversion.rpm
+     rpm -Uvh latestversion.rpm
      ```
 
 4. **Verify the new version**:
@@ -152,7 +159,7 @@
 5. **Rollback to the previous version**:
    - Use the `rpm --rollback` command:
      ```bash
-     sudo rpm --rollback
+     rpm --rollback
      ```
 
 6. **Verify that the rollback was successful**:
@@ -170,7 +177,7 @@
 1. **Add the EPEL repository**:
    - Install the EPEL repository for additional packages:
      ```bash
-     sudo dnf install epel-release
+     dnf install epel-release
      ```
 
 2. **Verify the repository has been added**:
@@ -182,7 +189,7 @@
 3. **Install the "Development Tools" group**:
    - Use `dnf` to install a group of development tools:
      ```bash
-     sudo dnf groupinstall "Development Tools"
+     dnf groupinstall "Development Tools"
      ```
 
 4. **Verify the installation**:
@@ -200,31 +207,31 @@
 1. **Create a new user named `adminuser`**:
    - Use the `useradd` command to create the user:
      ```bash
-     sudo useradd adminuser
+     useradd adminuser
      ```
 
 2. **Assign the user to the `wheel` group**:
    - Use the `usermod` command to add the user to the group:
      ```bash
-     sudo usermod -aG wheel adminuser
+     usermod -aG wheel adminuser
      ```
 
 3. **Set a password for the user**:
    - Use the `passwd` command:
      ```bash
-     sudo passwd adminuser
+     passwd adminuser
      ```
 
 4. **Enable the `httpd` service to start on boot**:
    - Use `systemctl` to enable the service:
      ```bash
-     sudo systemctl enable httpd
+     systemctl enable httpd
      ```
 
 5. **Start the `httpd` service**:
    - Start the service immediately:
      ```bash
-     sudo systemctl start httpd
+     systemctl start httpd
      ```
 
 6. **Verify the service is running**:
@@ -315,7 +322,7 @@
 2. **Enable SELinux if it’s disabled**:
    - Edit `/etc/selinux/config` and set it to enforcing:
      ```bash
-     sudo nano /etc/selinux/config
+     nano /etc/selinux/config
      ```
 
    Change `SELINUX=disabled` to `SELINUX=enforcing`.
@@ -323,20 +330,20 @@
 3. **Check firewall rules**:
    - Use `firewall-cmd` to list the active zones and rules:
      ```bash
-     sudo firewall-cmd --list-all
+     firewall-cmd --list-all
      ```
 
 4. **Add a rule to allow HTTP traffic**:
    - Use `firewall-cmd` to allow HTTP service:
      ```bash
-     sudo firewall-cmd --permanent --add-service=http
-     sudo firewall-cmd --reload
+     firewall-cmd --permanent --add-service=http
+     firewall-cmd --reload
      ```
 
 5. **Verify the new rule**:
    - List the rules again to check if HTTP has been allowed:
      ```bash
-     sudo firewall-cmd --list-all
+     firewall-cmd --list-all
      ```
 
 ---
@@ -348,13 +355,13 @@
 1. **List all disk devices**:
    - Use the `fdisk` command to list all disks:
      ```bash
-     sudo fdisk -l
+     fdisk -l
      ```
 
 2. **Select the disk to partition** (replace `/dev/sdb` with your actual disk):
    - Use `fdisk` to interact with the disk:
      ```bash
-     sudo fdisk /dev/sdb
+     fdisk /dev/sdb
      ```
 
 3. **Create a new partition**:
@@ -363,14 +370,14 @@
 4. **Format the partition**:
    - Use `mkfs` to format the partition as ext4:
      ```bash
-     sudo mkfs.ext4 /dev/sdb1
+     mkfs.ext4 /dev/sdb1
      ```
 
 5. **Mount the partition**:
    - Create a mount point and mount the new partition:
      ```bash
-     sudo mkdir /mnt/newpartition
-     sudo mount /dev/sdb1 /mnt/newpartition
+     mkdir /mnt/newpartition
+     mount /dev/sdb1 /mnt/newpartition
      ```
 
 6. **Verify the partition is mounted**:
@@ -418,33 +425,33 @@
 1. **Install Nginx**:
    - Install the Nginx web server using `dnf`:
      ```bash
-     sudo dnf install nginx
+     dnf install nginx
      ```
 
 2. **Start and enable Nginx**:
    - Start Nginx and ensure it runs on boot:
      ```bash
-     sudo systemctl start nginx
-     sudo systemctl enable nginx
+     systemctl start nginx
+     systemctl enable nginx
      ```
 
 3. **Install MySQL/MariaDB**:
    - Install MariaDB (or MySQL) for your database layer:
      ```bash
-     sudo dnf install mariadb-server mariadb
+     dnf install mariadb-server mariadb
      ```
 
 4. **Start and enable MariaDB**:
    - Start the database service and enable it at boot:
      ```bash
-     sudo systemctl start mariadb
-     sudo systemctl enable mariadb
+     systemctl start mariadb
+     systemctl enable mariadb
      ```
 
 5. **Secure the MariaDB installation**:
    - Secure the MariaDB installation by setting a root password and removing test databases:
      ```bash
-     sudo mysql_secure_installation
+     mysql_secure_installation
      ```
 
 6. **Create a database for your Flask application**:
@@ -460,7 +467,7 @@
 7. **Install Python and Flask**:
    - Install Python 3 and `pip` (Python's package manager):
      ```bash
-     sudo dnf install python3 python3-pip
+     dnf install python3 python3-pip
      ```
 
    - Install Flask and any other necessary Python packages:
@@ -499,7 +506,7 @@
 10. **Configure Nginx to Serve the Flask App**:
     - Create an Nginx configuration file for your Flask app:
       ```bash
-      sudo nano /etc/nginx/conf.d/flaskapp.conf
+      nano /etc/nginx/conf.d/flaskapp.conf
       ```
 
     - Add the following configuration to proxy pass requests to the Flask app:
@@ -521,7 +528,7 @@
 11. **Restart Nginx**:
     - After configuring Nginx, restart the service to apply the changes:
       ```bash
-      sudo systemctl restart nginx
+      systemctl restart nginx
       ```
 
 12. **Access the Flask app via Nginx**:
