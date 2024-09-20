@@ -11,11 +11,11 @@
 1. **Open Terminal**:
    - Access a linux command line. I'm using `podman` to stand up a container for this course, but you can use some other cli like `docker` if you prefer.
    ```
-   podman run -it centos bash
+   podman run -it fedora:40 bash
    ```
    or
    ```
-   docker run -it centos bash
+   docker run -it fedora:40 bash
    ```
 
 2. **Move to the `/usr/bin` directory**:
@@ -81,8 +81,10 @@
 5. **Change the ownership of the file to another user** (replace `username` with an actual user on your system):
    - Use the `chown` command:
      ```bash
-     chown username ~/myfile.txt
+     chown operator ~/myfile.txt
      ```
+     
+    > **NOTE:** You can view a list of potential users if you cat the /etc/passwd file `cat /etc/passwd`
 
 6. **Verify the ownership change**:
    - Use `ls -l` to confirm that the owner has changed:
@@ -99,150 +101,21 @@
 1. **Download an RPM package**:
    - Download a package from a trusted source, for example, `wget`:
      ```bash
+     # upgrade a package or packages on your system
+     dnf update
      dnf install wget
+     dnf install which -y
      ```
 
-2. **Install the RPM package**:
-   - Use the `rpm -ivh` command to install the package (replace `package.rpm` with the actual filename):
+2. **Verify installation**:
+   - Verify the installation of wget
      ```bash
-     rpm -ivh package.rpm
-     ```
-
-3. **Verify that the package is installed**:
-   - Use `rpm -q` to query the package name:
-     ```bash
-     rpm -q packagename
-     ```
-
-4. **Get detailed information about the package**:
-   - Use `rpm -qi` to retrieve detailed package information:
-     ```bash
-     rpm -qi packagename
-     ```
-
-5. **Check the installation location**:
-   - Use `rpm -ql` to list the files installed by the package:
-     ```bash
-     rpm -ql packagename
+     which wget
      ```
 
 ---
 
-## Section 4: Advanced RPM Usage
-### Exercise: Upgrading and Rolling Back RPM Packages
-**Objective**: Upgrade a package and roll back to a previous version.
-
-1. **Install an older version of a package**:
-   - Download and install an older version of a package:
-     ```bash
-     rpm -ivh oldversion.rpm
-     ```
-
-2. **Verify the installed version**:
-   - Use `rpm -qi` to check the package version:
-     ```bash
-     rpm -qi packagename
-     ```
-
-3. **Upgrade the package to the latest version**:
-   - Download the latest version and install it with `rpm -Uvh`:
-     ```bash
-     rpm -Uvh latestversion.rpm
-     ```
-
-4. **Verify the new version**:
-   - Check the updated version:
-     ```bash
-     rpm -qi packagename
-     ```
-
-5. **Rollback to the previous version**:
-   - Use the `rpm --rollback` command:
-     ```bash
-     rpm --rollback
-     ```
-
-6. **Verify that the rollback was successful**:
-   - Query the package version again to ensure it reverted:
-     ```bash
-     rpm -qi packagename
-     ```
-
----
-
-## Section 5: Mastering YUM/DNF for Package Management
-### Exercise: Repository Configuration and Software Group Installation
-**Objective**: Add a repository and install a software group.
-
-1. **Add the EPEL repository**:
-   - Install the EPEL repository for additional packages:
-     ```bash
-     dnf install epel-release
-     ```
-
-2. **Verify the repository has been added**:
-   - List all configured repositories:
-     ```bash
-     dnf repolist
-     ```
-
-3. **Install the "Development Tools" group**:
-   - Use `dnf` to install a group of development tools:
-     ```bash
-     dnf groupinstall "Development Tools"
-     ```
-
-4. **Verify the installation**:
-   - Check that the group was installed by listing installed groups:
-     ```bash
-     dnf grouplist installed
-     ```
-
----
-
-## Section 6: Basic System Administration
-### Exercise: Service and User Management
-**Objective**: Create a user, assign them to a group, and manage a service.
-
-1. **Create a new user named `adminuser`**:
-   - Use the `useradd` command to create the user:
-     ```bash
-     useradd adminuser
-     ```
-
-2. **Assign the user to the `wheel` group**:
-   - Use the `usermod` command to add the user to the group:
-     ```bash
-     usermod -aG wheel adminuser
-     ```
-
-3. **Set a password for the user**:
-   - Use the `passwd` command:
-     ```bash
-     passwd adminuser
-     ```
-
-4. **Enable the `httpd` service to start on boot**:
-   - Use `systemctl` to enable the service:
-     ```bash
-     systemctl enable httpd
-     ```
-
-5. **Start the `httpd` service**:
-   - Start the service immediately:
-     ```bash
-     systemctl start httpd
-     ```
-
-6. **Verify the service is running**:
-   - Check the service status:
-     ```bash
-     systemctl status httpd
-     ```
-
----
-
-## Section 7: Networking Basics
+## Section 4: Networking Basics
 ### Exercise: Basic Network Troubleshooting
 **Objective**: Test network connectivity and troubleshoot with basic tools.
 
@@ -252,23 +125,18 @@
      ping google.com
      ```
 
-2. **Trace the network route using `traceroute`**:
-   - Use the `traceroute` command to see the path to a domain:
-     ```bash
-     traceroute google.com
-     ```
+     >**NOTE:** You may need to install `ping` if it is missing. It is included in the `iputils` package.
 
-3. **Display your machine’s network interfaces**:
-   - Use `ifconfig` or `ip a`:
+2. **Display your machine’s network interfaces**:
+   - Use `ifconfig`:
      ```bash
      ifconfig
-     # OR
-     ip a
      ```
+     >**NOTE:** install `net-tools`
 
 ---
 
-## Section 8: Scripting and Automation
+## Section 7: Scripting and Automation
 ### Exercise: Automating a Backup Script
 **Objective**: Write a shell script to back up files and schedule it with `cron`.
 
@@ -277,6 +145,8 @@
      ```bash
      nano backup.sh
      ```
+
+     > **NOTE:** `nano` is a file editor. If nano is not currently installed on your linux system how can you install it using `dnf`?
 
    Inside the file:
      ```bash
@@ -309,7 +179,7 @@
 
 ---
 
-## Section 9: Basic Security and Hardening
+## Section 8: Basic Security and Hardening
 ### Exercise: SELinux and Firewall Configuration
 **Objective**: Understand SELinux and configure the firewall.
 
@@ -348,7 +218,7 @@
 
 ---
 
-## Section 10: Disk Management and Partitioning
+## Section 9: Disk Management and Partitioning
 ### Exercise: Manage Partitions with `fdisk`
 **Objective**: Create and format a new partition.
 
@@ -388,7 +258,7 @@
 
 ---
 
-## Section 11: Backup and Restore Strategies
+## Section 10: Backup and Restore Strategies
 ### Exercise: Creating Incremental Backups with `rsync`
 **Objective**: Perform incremental backups using `rsync`.
 
@@ -418,7 +288,7 @@
 
 ---
 
-## Section 12: Course Review and Capstone Project
+## Section 11: Course Review and Capstone Project
 ### Capstone Project: Setting Up a Python Web Application with the LEMP Stack
 **Objective**: Set up and configure a Python-based web application on a LEMP stack (Linux, Nginx, MySQL, Python with Flask).
 
