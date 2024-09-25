@@ -59,3 +59,12 @@ def display_datetime():
 if __name__ == "__main__":
     display_datetime()
 ```
+
+## Section 3: Running a service in a container
+In this exercise you will:
+- create a simple python rest service
+- bundle the rest service in a docker container
+- run the resulting container image
+- verify the service endpoints in a browser
+
+Please see the corresponding [Section 3 exercise](./Section3-exercise/)
