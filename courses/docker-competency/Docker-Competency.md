@@ -68,3 +68,28 @@ In this exercise you will:
 - verify the service endpoints in a browser
 
 Please see the corresponding [Section 3 exercise](./Section3-exercise/)
+
+## Section 4: Container image registries
+In this exercise you will:
+- Create an account on DockerHub
+- Publish an image
+- Remove all local copies of the container image
+- Run your image referencing it from DockerHub
+
+Commands that will help with the exercise:
+
+```
+docker container ls                   # list local containers
+docker container stop <container id>  # stop running container
+docker container rm <container id>    # remove container
+docker image ls                       # list local images
+docker rm <image id>                  # remove image
+```
+
+> **NOTE:** both the `docker container ls` and `docker image ls` commands support an `-a` and a `-q`
+>
+> How can these flags be used to chain commands?
+>
+> try this out: `docker container stop $(docker container ls -aq)`
+
+Please see the corresponding [Section 4 exercise](./Section4-exercise/)
