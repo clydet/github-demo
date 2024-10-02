@@ -3,7 +3,8 @@
 ## Section 1: Your first GitHub Action workflow
 - Create a simple container image CI build
 
-###Questions:###
+### Questions: 
+
 - How can you automate container image publish via a github action workflow?
     - How can you publish your image to a docker registry without exposing your login credentials in the source code?
         - Look into how you can configure [secrets in github](https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions).
