@@ -7,18 +7,16 @@ app = Flask(__name__)
 customers = {}
 
 class Customer:
-    def __init__(self, name, email, phone):
+    def __init__(self, name, email):
         self.id = str(uuid4())
         self.name = name
         self.email = email
-        self.phone = phone
 
     def to_dict(self):
         return {
             "id": self.id,
             "name": self.name,
-            "email": self.email,
-            "phone": self.phone
+            "email": self.email
         }
 
 # CRUD Operations
@@ -27,12 +25,12 @@ class Customer:
 def create_customer():
     """
     Create a new customer.
-    JSON payload should contain name, email, and phone number.
+    JSON payload should contain name and email.
     """
-    if not request.json or 'name' not in request.json or 'email' not in request.json or 'phone' not in request.json:
+    if not request.json or 'name' not in request.json or 'email' not in request.json:
         return jsonify({"error": "Invalid JSON or missing fields"}), 400
     
-    customer = Customer(request.json['name'], request.json['email'], request.json['phone'])
+    customer = Customer(request.json['name'], request.json['email'])
     customers[customer.id] = customer
     
     return jsonify(customer.to_dict()), 201
